@@ -7,7 +7,10 @@ async function bootstrap() {
 
 
   app.enableCors({
-    origin: 'http://localhost:4200', 
+    origin: [
+      'http://localhost:4200',           
+      'https://tu-frontend.vercel.app'   
+    ], 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     allowedHeaders: 'Content-Type, Accept, Authorization',
