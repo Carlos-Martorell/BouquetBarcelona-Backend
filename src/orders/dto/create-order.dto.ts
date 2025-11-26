@@ -58,6 +58,10 @@ export class CreateOrderDto {
   @IsNotEmpty()
   deliveryAddress: string;
 
+  @IsString()
+  @IsOptional()
+  deliveryDetails?: string;
+
   @IsOptional()
   @ValidateNested()
   @Type(() => CoordinatesDto)

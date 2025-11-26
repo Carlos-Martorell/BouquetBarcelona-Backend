@@ -16,7 +16,10 @@ export class Order {
 
   @Prop({ required: true })
   deliveryAddress: string;
-
+  
+  @Prop()
+  deliveryDetails?: string;
+  
   @Prop({ type: Object })
   coordinates: {
     lat: number;
@@ -49,6 +52,7 @@ export class Order {
 
   @Prop()
   notes?: string;
+
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order);
