@@ -62,4 +62,15 @@ export class OrdersService {
       deliveryDate: { $gte: startOfDay, $lte: endOfDay }
     }).exec();
   }
+
+  async updateStatus(id: string, status: string): Promise<Order> {
+    const order = await this.orderModel.findById(id);
+    
+    if (!order) {
+      throw new NotFoundException('Order not found');
+    }
+    
+    order.status = status;
+    return order.save();
+  }
 }
