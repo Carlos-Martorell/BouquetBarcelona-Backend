@@ -4,11 +4,23 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { FlowersModule } from './flowers/flowers.module';
 import { OrdersModule } from './orders/orders.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [MongooseModule.forRoot('mongodb+srv://cmartorellotal_db_user:12345@cluster0.6gdkzub.mongodb.net/?appName=Cluster0'), 
     FlowersModule,
-    OrdersModule 
+    OrdersModule,
+    ConfigModule.forRoot({
+      isGlobal: true, 
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule], 
+      useFactory: async (configService: ConfigService) => ({
+        
+        uri: configService.get<string>('MONGO_URI'), 
+      }),
+      inject: [ConfigService],
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

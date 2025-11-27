@@ -20,8 +20,13 @@ export class Order {
   @Prop()
   deliveryDetails?: string;
   
-  @Prop({ type: Object })
-  coordinates: {
+  @Prop({
+    type: {
+      lat: { type: Number, required: true },
+      lng: { type: Number, required: true }
+    }
+  })
+  coordinates?: {
     lat: number;
     lng: number;
   };
