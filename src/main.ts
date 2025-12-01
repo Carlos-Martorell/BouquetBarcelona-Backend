@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { SeedService } from './seed/seed.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -9,7 +10,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:4200',           
-      'https://tu-frontend.vercel.app'   
+      'https://bouquet-barcelona-frontend.vercel.app'   
     ], 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
@@ -24,6 +25,10 @@ async function bootstrap() {
     whitelist: true,
     forbidNonWhitelisted: true
   }))
+
+  const seedService = app.get(SeedService);
+  await seedService.createAdminUser();
+
 
   await app.listen(process.env.PORT ?? 3000);
 }
