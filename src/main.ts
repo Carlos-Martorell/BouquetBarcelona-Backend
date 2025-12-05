@@ -10,8 +10,9 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:4200',           
-      'https://bouquet-barcelona-frontend.vercel.app'   
-    ], 
+      'https://bouquet-barcelona-frontend.vercel.app',
+      'https://bouquet-barcelona-shop-frontend.vercel.app'
+      ], 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     allowedHeaders: 'Content-Type, Accept, Authorization',
@@ -19,7 +20,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api')
 
-  //habilitar validaciones
+  ////habilitar validaciones
   app.useGlobalPipes(new ValidationPipe({
     transform: true,
     whitelist: true,
