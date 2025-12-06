@@ -1,5 +1,6 @@
 
-import { IsString, IsNumber, IsNotEmpty, IsArray, IsInt, ArrayNotEmpty } from 'class-validator';
+import { IsString, IsNumber, IsNotEmpty, IsArray, IsInt, ArrayNotEmpty, IsEnum, Min, IsOptional } from 'class-validator';
+import { FlowerCategory, FlowerOccasion, FlowerSize } from '../enums/flower.enums';
 export class CreateFlowerDto {
 
     @IsString()
@@ -14,9 +15,8 @@ export class CreateFlowerDto {
     @IsNotEmpty()
     readonly description: string;
     
-    @IsString()
-    @IsNotEmpty()
-    readonly category: string;
+    @IsEnum(FlowerCategory)
+    readonly category: FlowerCategory;
 
     @IsArray()
     @ArrayNotEmpty()
@@ -26,6 +26,21 @@ export class CreateFlowerDto {
     @IsNumber()
     @IsNotEmpty()
     @IsInt()
+    @Min(0)
     readonly stock: number;
 
+    @IsEnum(FlowerSize)
+    readonly size: FlowerSize;
+
+    @IsArray()
+    @ArrayNotEmpty()
+    @IsString({ each: true })
+    readonly colors: string[];
+
+    @IsEnum(FlowerOccasion)
+    readonly occasion: FlowerOccasion;
+
+    @IsString()
+    @IsOptional()
+    readonly careInstructions?: string;
 }
