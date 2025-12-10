@@ -53,10 +53,16 @@ export class Order {
   deliveryDate: Date;
 
   @Prop({ required: true })
-  deliveryTime: string; // "10:00-12:00"
+  deliveryTime: string; 
 
   @Prop()
   notes?: string;
+
+  @Prop({ enum: ['pending', 'paid', 'failed'], default: 'pending' })
+  paymentStatus?: string; 
+
+  @Prop()
+  stripeSessionId?: string; 
 
 }
 
