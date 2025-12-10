@@ -8,7 +8,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { SeedModule } from './seed/seed.module';
-import { StripeModule } from 'stripe/stripe.module';
+import { StripeModule } from 'src/stripe/stripe.module';
 
 @Module({
   imports: [MongooseModule.forRoot('mongodb+srv://cmartorellotal_db_user:12345@cluster0.6gdkzub.mongodb.net/?appName=Cluster0'), 

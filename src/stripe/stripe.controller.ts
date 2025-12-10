@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import Stripe from 'stripe';
 import { Request } from 'express';
-import { Order } from '../src/orders/schema/order.schema';
+import { Order } from '../orders/schema/order.schema';
 import { Controller, Post, Body, Headers, Req, HttpCode, BadRequestException } from '@nestjs/common';
 import type { RawBodyRequest } from '@nestjs/common';
 
