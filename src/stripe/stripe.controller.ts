@@ -58,7 +58,7 @@ export class StripeController {
         ],
         mode: 'payment',
         success_url: `${process.env.FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${process.env.FRONTEND_URL}/checkout`,
+        cancel_url: `${process.env.FRONTEND_URL}/checkout?payment=cancelled`,
         customer_email: order.customerEmail,
         metadata: {
           orderId: orderId
