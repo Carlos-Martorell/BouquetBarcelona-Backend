@@ -109,7 +109,7 @@ export class StripeController {
 
         if (orderId) {
           await this.orderModel.findByIdAndUpdate(orderId, {
-            status: 'confirmed',
+            status: 'pending',
             paymentStatus: 'paid'
           });
 
